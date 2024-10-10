@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de Imagen</title>
+    <style>
+        /* Estilo general para el cuerpo de la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff7eb9 0%, #feb2d2 100%); /* Fondo degradado */
+        }
+
+        /* Estilo del contenedor principal */
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo para el encabezado */
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Estilo para la imagen */
+        #imagen {
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Efecto hover sobre la imagen */
+        #imagen:hover {
+            transform: scale(1.1); /* Agranda la imagen cuando el usuario pasa el mouse */
+        }
+
+        /* Estilo para el botón */
+        #cambiarImagenBtn {
+            background-color: #ff758c;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        /* Efecto hover sobre el botón */
+        #cambiarImagenBtn:hover {
+            background-color: #e84060; /* Cambia el color del botón cuando el usuario pasa el mouse */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cambiar Imagen</h1>
+
+        <!-- Imagen inicial que se mostrará en la página -->
+        <img id="imagen" src="Lady.jpg" alt="Lady" width="300">
+        <br>
+
+        <!-- Botón para cambiar la imagen -->
+        <button id="cambiarImagenBtn">Cambiar Imagen</button>
+    </div>
+
+    <script>
+        // Seleccionamos el elemento de la imagen usando su ID
+        const imagen = document.getElementById('imagen');
+
+        // Seleccionamos el botón que activará el cambio de imagen
+        const boton = document.getElementById('cambiarImagenBtn');
+
+        // Definimos un arreglo con las rutas de las imágenes que queremos alternar
+        const imagenes = ['Lady.jpg', 'chat.jpeg', 'login.jpg'];
+
+        // Variable para llevar el seguimiento de qué imagen se está mostrando
+        let indiceActual = 0;
+
+        // Agregamos un evento al botón para que ejecute una función cuando se haga clic
+        boton.addEventListener('click', () => {
+            // Al hacer clic, se incrementa el índice en 1. Si el índice llega al final del arreglo, vuelve a 0 (ciclo).
+            indiceActual = (indiceActual + 1) % imagenes.length;
+
+            // Cambiamos el atributo 'src' de la imagen al siguiente en el arreglo
+            imagen.src = imagenes[indiceActual];
+        });
+    </script>
+
+</body>
+</html>
